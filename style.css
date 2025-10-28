@@ -55,3 +55,32 @@ body:has(nav[class*="sidebar"]) nav,
 body:has(nav[class*="sidebar"]) aside {
   display: block !important;
 }
+
+/* Force black text in light mode */
+html h1,
+html h2,
+html p {
+  color: #000000 !important;
+}
+
+/* Dark mode - check all possible selectors */
+html[class~="dark"] h1,
+html[class~="dark"] h2,
+html[class~="dark"] p,
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] p,
+.dark h1,
+.dark h2,
+.dark p {
+  color: #ffffff !important;
+}
+
+/* System preference dark mode */
+@media (prefers-color-scheme: dark) {
+  html:not([class~="light"]) h1,
+  html:not([class~="light"]) h2,
+  html:not([class~="light"]) p {
+    color: #ffffff !important;
+  }
+}
