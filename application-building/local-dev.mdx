@@ -1,0 +1,52 @@
+---
+title: "Local Developer Mode"
+description: "Develop and test locally"
+---
+
+## Local Development
+
+Run Superblocks applications on your local machine for faster development and testing.
+
+## Setup
+
+Install the Superblocks CLI:
+
+```bash
+npm install -g @superblocks/cli
+```
+
+## Running Locally
+
+Start the local development server:
+
+```bash
+superblocks dev
+```
+
+Your application will be available at `http://localhost:3000`
+
+## Features
+
+<CardGroup cols={2}>
+  <Card title="Hot Reload" icon="bolt">
+    Instant updates as you code
+  </Card>
+  <Card title="Local Databases" icon="database">
+    Connect to local data sources
+  </Card>
+  <Card title="Debug Mode" icon="bug">
+    Enhanced debugging tools
+  </Card>
+  <Card title="Offline Work" icon="wifi">
+    Develop without internet connection
+  </Card>
+</CardGroup>
+
+## Best Practices
+
+<Tip>
+  Use environment variables to switch between local and production
+  configurations
+</Tip>
+
+<Warning>Never commit sensitive credentials to version control</Warning>

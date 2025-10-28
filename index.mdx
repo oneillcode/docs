@@ -1,97 +1,176 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+title: "Build with Superblocks"
+description: "Learn how to get started with the Superblocks Platform and build powerful internal tools."
+mode: "custom"
 ---
 
-## Setting up
+<div style={{ textAlign: "center", padding: "60px 0 40px" }}>
+  <h1
+    style={{
+      fontSize: "4rem",
+      fontWeight: "600",
+      marginBottom: "1.5rem",
+      lineHeight: "1.1",
+      color: "#FFFFFF",
+    }}
+  >
+    Build with Superblocks
+  </h1>
+  <p
+    style={{
+      fontSize: "1.5rem",
+      color: "#FFFFFF",
+      opacity: "0.7",
+      maxWidth: "800px",
+      margin: "0 auto 2rem",
+    }}
+  >
+    Learn how to get started with the Superblocks Platform and create
+    production-ready internal tools in minutes.
+  </p>
 
-Get your documentation site up and running in minutes.
+  <div style={{ maxWidth: "600px", margin: "0 auto" }}>
+    <div
+      style={{
+        width: "100%",
+        padding: "12px 16px",
+        border: "1px solid rgba(128, 128, 128, 0.3)",
+        borderRadius: "8px",
+        fontSize: "15px",
+        opacity: "0.7",
+        backgroundColor: "rgba(128, 128, 128, 0.1)",
+        cursor: "pointer",
+        transition: "all 0.2s",
+        textAlign: "left",
+      }}
+      onClick={() => {
+        const searchButton = document.querySelector(
+          '[data-search-button], [aria-label*="Search"], button[class*="search"]'
+        );
+        if (searchButton) searchButton.click();
+      }}
+    >
+      Ask about Superblocks docs...
+    </div>
+  </div>
+</div>
+
+<div style={{ textAlign: "center", marginTop: "4rem", marginBottom: "2rem" }}>
+  <h2 style={{ fontSize: "2rem", fontWeight: "600", color: "#FFFFFF" }}>
+    Application Building
+  </h2>
+</div>
+
+<CardGroup cols={3}>
+  <Card title="Getting Started" icon="rocket" href="/application-building/get-started">
+    Quick start guide to building your first application
+  </Card>
+
+{" "}
 
 <Card
-  title="Start here"
-  icon="rocket"
-  href="/quickstart"
-  horizontal
+  title="Clark"
+  icon="wand-magic-sparkles"
+  href="/application-building/clark"
 >
-  Follow our three step quickstart guide.
+  AI-powered application development
 </Card>
 
-## Make it yours
-
-Design a docs site that looks great and empowers your users.
-
-<Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
-  </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
-  </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
-  </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
-  </Card>
-</Columns>
-
-## Create beautiful pages
-
-Everything you need to create world-class documentation.
-
-<Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
-  </Card>
-  <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
-  >
-    Add sample code to demonstrate how to use your product.
-  </Card>
-  <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
-  >
-    Display images and other media.
-  </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
-  </Card>
-</Columns>
-
-## Need inspiration?
+{" "}
 
 <Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
+  title="Visual Editing"
+  icon="paintbrush"
+  href="/application-building/visual-editor"
 >
-  Browse our showcase of exceptional documentation sites.
+  Drag-and-drop interface builder
 </Card>
+
+{" "}
+
+<Card
+  title="API Builder"
+  icon="code-branch"
+  href="/application-building/api-builder"
+>
+  Create and manage API endpoints
+</Card>
+
+  <Card title="React" icon="react" href="/application-building/react">
+    Build custom components with React
+  </Card>
+</CardGroup>
+
+<div style={{ textAlign: "center", marginTop: "4rem", marginBottom: "2rem" }}>
+  <h2 style={{ fontSize: "2rem", fontWeight: "600", color: "#FFFFFF" }}>
+    Platform
+  </h2>
+</div>
+
+<CardGroup cols={3}>
+  <Card title="Platform Overview" icon="layer-group" href="/guides">
+    Introduction to the Superblocks platform
+  </Card>
+
+{" "}
+
+<Card title="On-Premise Agent" icon="server" href="/guides">
+  Deploy and manage on-premise infrastructure
+</Card>
+
+{" "}
+
+<Card title="Integrations" icon="puzzle-piece" href="/guides">
+  Connect with databases, APIs, and services
+</Card>
+
+{" "}
+
+<Card title="Development Lifecycle" icon="arrows-spin" href="/guides">
+  Manage your development workflow
+</Card>
+
+{" "}
+
+<Card title="Role Based Access Control" icon="user-shield" href="/guides">
+  Configure permissions and access control
+</Card>
+
+  <Card title="Observability" icon="chart-line" href="/guides">
+    Monitor and analyze your applications
+  </Card>
+</CardGroup>
+
+<div style={{ textAlign: "center", marginTop: "4rem", marginBottom: "2rem" }}>
+  <h2 style={{ fontSize: "2rem", fontWeight: "600", color: "#FFFFFF" }}>
+    Security
+  </h2>
+</div>
+
+<CardGroup cols={3}>
+  <Card title="Security Guide" icon="shield-halved" href="/guides">
+    Security best practices and guidelines
+  </Card>
+
+{" "}
+
+<Card title="AI Security" icon="brain" href="/guides">
+  Secure AI-powered features
+</Card>
+
+{" "}
+
+<Card title="SOC 2 Type 2" icon="certificate" href="/guides">
+  Compliance and certification information
+</Card>
+
+{" "}
+
+<Card title="HIPAA" icon="hospital" href="/guides">
+  Healthcare data compliance
+</Card>
+
+  <Card title="Secrets Managers" icon="key" href="/guides">
+    Manage and secure sensitive credentials
+  </Card>
+</CardGroup>

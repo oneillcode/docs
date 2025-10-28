@@ -1,0 +1,56 @@
+---
+title: "API Builder"
+description: "Create and manage API endpoints"
+---
+
+## API Builder
+
+Build and manage RESTful APIs directly within Superblocks.
+
+## Creating APIs
+
+<Steps>
+  <Step title="Define Endpoint">
+    Set the HTTP method (GET, POST, PUT, DELETE) and path
+  </Step>
+  <Step title="Add Logic">Write JavaScript to handle requests</Step>
+  <Step title="Configure Response">
+    Define the response format and status codes
+  </Step>
+  <Step title="Test">Use the built-in testing tools</Step>
+</Steps>
+
+## Example API
+
+```javascript
+// GET /api/users/:id
+const userId = request.params.id;
+
+const user = await Database.query(`
+  SELECT * FROM users WHERE id = ${userId}
+`);
+
+return {
+  status: 200,
+  body: user,
+};
+```
+
+## Authentication
+
+Secure your APIs with built-in authentication:
+
+<CardGroup cols={2}>
+  <Card title="API Keys" icon="key">
+    Simple token-based authentication
+  </Card>
+  <Card title="OAuth 2.0" icon="lock">
+    Industry-standard OAuth flows
+  </Card>
+  <Card title="JWT" icon="shield">
+    JSON Web Token validation
+  </Card>
+  <Card title="Custom Auth" icon="user-shield">
+    Implement your own logic
+  </Card>
+</CardGroup>

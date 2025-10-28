@@ -1,0 +1,57 @@
+/* 
+  Superblocks Documentation Styling
+  
+  Custom mode pages (Home) = centered, no sidebars
+  Normal pages = default layout with left and right sidebars
+*/
+
+/* Only apply centering to pages WITHOUT sidebars (custom mode) */
+/* Target pages by checking if they're in custom mode */
+
+/* For custom mode pages only - center everything */
+body:not(:has(nav[class*="sidebar"])) main,
+body:not(:has(nav[class*="sidebar"])) article,
+body:not(:has(nav[class*="sidebar"])) [role="main"] {
+  max-width: 1400px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 2rem 4rem !important;
+}
+
+/* Ensure content wrapper is centered on custom mode pages */
+body:not(:has(nav[class*="sidebar"])) > div,
+body:not(:has(nav[class*="sidebar"])) > div > div {
+  max-width: 1400px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Card groups on custom mode pages */
+body:not(:has(nav[class*="sidebar"])) [class*="card"],
+body:not(:has(nav[class*="sidebar"])) [class*="Card"],
+body:not(:has(nav[class*="sidebar"])) [class*="CardGroup"] {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* For pages WITH sidebars - use default Mintlify layout */
+/* Left sidebar positioning */
+#sidebar {
+  order: -1;
+}
+
+#content-container {
+  order: 1;
+}
+
+.layout {
+  display: flex;
+}
+
+/* Ensure sidebars are visible on non-custom pages */
+body:has(nav[class*="sidebar"]) nav,
+body:has(nav[class*="sidebar"]) aside {
+  display: block !important;
+}

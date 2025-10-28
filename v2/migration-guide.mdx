@@ -1,0 +1,296 @@
+---
+title: "Migration Guide: v1.0 to v2.0"
+description: "Step-by-step guide to migrate from Version 1.0 to Version 2.0"
+icon: "arrow-right"
+---
+
+## Overview
+
+This guide will help you smoothly migrate your application from Superblocks Version 1.0 to Version 2.0.
+
+<Warning>
+  **Important:** Always test the migration in a development environment before
+  applying changes to production.
+</Warning>
+
+## Pre-Migration Checklist
+
+<Steps>
+  <Step title="Review Breaking Changes">
+    Read through all breaking changes documented below
+  </Step>
+  <Step title="Update Dependencies">
+    Ensure your system meets the new requirements
+  </Step>
+  <Step title="Backup Your Data">
+    Create a complete backup of your database and configuration
+  </Step>
+  <Step title="Test Environment">Set up a staging environment for testing</Step>
+</Steps>
+
+## System Requirements
+
+| Requirement | v1.0 | v2.0 |
+| ----------- | ---- | ---- |
+| Node.js     | 14+  | 18+  |
+| PostgreSQL  | 12+  | 14+  |
+| Redis       | 5.0+ | 6.0+ |
+| Memory      | 1GB  | 2GB  |
+
+## Breaking Changes
+
+<AccordionGroup>
+  <Accordion title="API Response Format" icon="code">
+    The API response format has been updated to include metadata:
+    
+    **v1.0:**
+    ```json
+    {
+      "data": [...]
+    }
+    ```
+    
+    **v2.0:**
+    ```json
+    {
+      "data": [...],
+      "meta": {
+        "total": 100,
+        "page": 1,
+        "perPage": 20
+      }
+    }
+    ```
+  </Accordion>
+  
+  <Accordion title="Authentication" icon="lock">
+    OAuth token endpoint has changed:
+    - **Old:** `/auth/token`
+    - **New:** `/v2/auth/token`
+    
+    Update your authentication flows accordingly.
+  </Accordion>
+  
+  <Accordion title="Date Formats" icon="calendar">
+    All dates now use ISO 8601 format with timezone information:
+    - **Old:** `2024-01-01 12:00:00`
+    - **New:** `2024-01-01T12:00:00Z`
+  </Accordion>
+</AccordionGroup>
+
+## Migration Steps
+
+### Step 1: Update Package
+
+```bash
+# Update to version 2.0
+npm install superblocks@2.0.0
+
+# Or with yarn
+yarn add superblocks@2.0.0
+```
+
+### Step 2: Update Configuration
+
+Update your configuration file:
+
+```javascript
+// Before (v1.0)
+const config = {
+  apiVersion: "1.0",
+  endpoint: "https://api.superblocks.io",
+};
+
+// After (v2.0)
+const config = {
+  apiVersion: "2.0",
+  endpoint: "https://api.superblocks.io",
+  features: {
+    graphql: true,
+    realtime: true,
+  },
+};
+```
+
+### Step 3: Update API Calls
+
+<CodeGroup>
+```javascript v1.0
+// Old API calls
+const users = await client.get('/users');
+console.log(users.data);
+```
+
+```javascript v2.0
+// New API calls
+const response = await client.users.list();
+console.log(response.data);
+console.log(response.meta); // New pagination info
+```
+
+</CodeGroup>
+
+### Step 4: Migrate Authentication
+
+```javascript
+// Update authentication initialization
+const client = new SuperblocksClient({
+  apiKey: process.env.API_KEY,
+  version: "2.0", // Specify version
+  auth: {
+    method: "bearer", // Now required
+    refreshToken: true, // New option
+  },
+});
+```
+
+### Step 5: Update Event Handlers
+
+```javascript
+// v1.0 - Callback style
+client.on("event", function (data) {
+  console.log(data);
+});
+
+// v2.0 - Promise/async style
+client.events.subscribe("event", async (data) => {
+  console.log(data);
+  return true; // Acknowledge event
+});
+```
+
+## Database Migration
+
+Run the migration script to update your database schema:
+
+```bash
+# Backup your database first!
+pg_dump yourdb > backup.sql
+
+# Run migration
+superblocks-cli migrate --from 1.0 --to 2.0
+
+# Verify migration
+superblocks-cli verify
+```
+
+## Feature Updates
+
+### GraphQL Support
+
+Add GraphQL endpoint alongside your REST API:
+
+```javascript
+// Initialize with GraphQL support
+const client = new SuperblocksClient({
+  apiKey: process.env.API_KEY,
+  graphql: {
+    enabled: true,
+    endpoint: "https://api.superblocks.io/graphql",
+  },
+});
+
+// Use GraphQL
+const query = `
+  query GetUser($id: ID!) {
+    user(id: $id) {
+      name
+      email
+    }
+  }
+`;
+
+const result = await client.graphql.query(query, { id: "123" });
+```
+
+### Real-time Features
+
+Upgrade to new WebSocket API:
+
+```javascript
+// v1.0
+const ws = new WebSocket("wss://api.superblocks.io/ws");
+
+// v2.0
+const realtime = client.realtime.connect();
+await realtime.subscribe("channel", (message) => {
+  console.log(message);
+});
+```
+
+## Common Issues
+
+<AccordionGroup>
+  <Accordion title="Rate Limit Errors" icon="triangle-exclamation">
+    If you're hitting rate limits, v2.0 has increased limits but requires proper
+    API key configuration. **Solution:** Update your API key in the dashboard to
+    v2.0 tier.
+  </Accordion>
+
+  <Accordion title="Token Expiration" icon="clock">
+    v2.0 has different token expiration times. Update your refresh logic.
+    **Solution:** Enable automatic token refresh: ```javascript
+    client.auth.autoRefresh = true; ```
+  </Accordion>
+
+  <Accordion title="Deprecated Methods" icon="ban">
+    Some v1.0 methods have been deprecated. **Solution:** Check the console
+    warnings and update to new methods: ```javascript // Deprecated
+    client.getUsers() // New client.users.list() ```
+  </Accordion>
+</AccordionGroup>
+
+## Testing Your Migration
+
+<Steps>
+  <Step title="Run Unit Tests">
+    Update and run your test suite ```bash npm test ```
+  </Step>
+
+  <Step title="Integration Tests">Test all API integrations in staging</Step>
+
+  <Step title="Load Testing">Verify performance improvements</Step>
+
+  <Step title="User Acceptance">Test critical user flows</Step>
+</Steps>
+
+## Rollback Plan
+
+If you need to rollback:
+
+```bash
+# Rollback package
+npm install superblocks@1.9.x
+
+# Restore database backup
+psql yourdb < backup.sql
+
+# Restart services
+systemctl restart your-app
+```
+
+## Support Resources
+
+<CardGroup cols={2}>
+  <Card title="Get Help" icon="life-ring" href="mailto:support@superblocks.com">
+    Contact our support team for migration assistance
+  </Card>
+  <Card
+    title="Community Forum"
+    icon="comments"
+    href="https://community.superblocks.com"
+  >
+    Ask questions and share experiences
+  </Card>
+  <Card title="Migration Checklist" icon="clipboard-check" href="#">
+    Download our comprehensive checklist
+  </Card>
+  <Card title="Video Tutorial" icon="video" href="#">
+    Watch our step-by-step migration guide
+  </Card>
+</CardGroup>
+
+<Info>
+  **Estimated Migration Time:** 2-4 hours for small applications, 1-2 days for
+  large enterprise systems.
+</Info>

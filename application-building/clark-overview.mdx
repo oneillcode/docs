@@ -1,0 +1,133 @@
+---
+title: "Clark Overview"
+description: "Introduction to Clark AI Assistant"
+---
+
+## What is Clark?
+
+Clark is Superblocks' AI-powered development assistant that helps you build applications faster and more efficiently.
+
+## Key Capabilities
+
+<CardGroup cols={2}>
+  <Card title="Natural Language" icon="comments">
+    Describe features in plain English
+  </Card>
+  <Card title="Code Generation" icon="code">
+    Automatically generate queries and logic
+  </Card>
+  <Card title="UI Design" icon="paintbrush">
+    Create interface components instantly
+  </Card>
+  <Card title="Debugging" icon="bug">
+    Identify and fix issues quickly
+  </Card>
+</CardGroup>
+
+## How Clark Works
+
+<Steps>
+  <Step title="Understand Intent">
+    Clark analyzes your natural language requests
+  </Step>
+  <Step title="Generate Solution">
+    Creates code, queries, and UI components
+  </Step>
+  <Step title="Apply Changes">
+    Automatically applies changes to your application
+  </Step>
+  <Step title="Iterate">Refine results based on your feedback</Step>
+</Steps>
+
+## Example Use Cases
+
+### Database Queries
+
+```javascript
+// Your prompt: "Get all active users from the database"
+
+// Clark generates:
+const activeUsers = await Database.query(`
+  SELECT * FROM users 
+  WHERE status = 'active' 
+  ORDER BY created_at DESC
+`);
+```
+
+### UI Components
+
+```
+Prompt: "Create a user profile card with avatar, name, and email"
+
+Clark generates:
+- Card component with styling
+- Avatar image component
+- Text fields for name and email
+- Proper layout and spacing
+```
+
+### API Integration
+
+```javascript
+// Your prompt: "Call the Stripe API to create a customer"
+
+// Clark generates:
+const customer = await StripeAPI.customers.create({
+  email: user.email,
+  name: `${user.firstName} ${user.lastName}`,
+  metadata: {
+    userId: user.id,
+  },
+});
+```
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Be Specific" icon="bullseye">
+    Provide clear, detailed descriptions of what you need ✅ "Create a data
+    table with user email, name, and signup date, sortable by date" ❌ "Make a
+    table"
+  </Accordion>
+
+  <Accordion title="Provide Context" icon="info-circle">
+    Give Clark information about your data structure and requirements "I have a
+    users table with columns: id, email, first_name, last_name, created_at"
+  </Accordion>
+
+  <Accordion title="Iterate" icon="rotate">
+    Refine Clark's output with follow-up prompts "Make the text larger" or "Add
+    a filter for active users only"
+  </Accordion>
+
+  <Accordion title="Review Output" icon="eye">
+    Always review AI-generated code before deploying to production
+  </Accordion>
+</AccordionGroup>
+
+## Getting Started
+
+<Tip>
+  Access Clark by clicking the AI assistant icon in your Superblocks workspace
+  or by pressing `Cmd+K` (Mac) or `Ctrl+K` (Windows)
+</Tip>
+
+## Learn More
+
+<CardGroup cols={2}>
+  <Card
+    title="Prompt Engineering"
+    href="/application-building/prompt-engineering"
+  >
+    Write better prompts for better results
+  </Card>
+  <Card title="Plan Mode" href="/application-building/plan-mode">
+    Use Clark to plan complex features
+  </Card>
+  <Card title="Context" href="/application-building/clark-context">
+    Provide context for better suggestions
+  </Card>
+  <Card title="Checkpointing" href="/application-building/checkpointing">
+    Save and restore AI-generated changes
+  </Card>
+</CardGroup>

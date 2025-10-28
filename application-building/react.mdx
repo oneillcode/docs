@@ -1,0 +1,264 @@
+---
+title: "React"
+description: "Build custom components with React"
+---
+
+## React Components
+
+Build custom React components to extend Superblocks functionality and create unique user experiences.
+
+## Getting Started with React
+
+<CardGroup cols={2}>
+  <Card title="Custom Components" icon="cube">
+    Create reusable React components
+  </Card>
+  <Card title="Hooks" icon="link">
+    Use React hooks for state and effects
+  </Card>
+  <Card title="TypeScript" icon="code">
+    Full TypeScript support
+  </Card>
+  <Card title="NPM Packages" icon="box">
+    Import any NPM package
+  </Card>
+</CardGroup>
+
+## Creating a Component
+
+```typescript
+import React, { useState } from "react";
+import { registerComponent, Prop } from "@superblocks/library";
+
+const properties = {
+  title: Prop.string().default("My Component"),
+  count: Prop.number().default(0),
+  onClick: Prop.event(),
+};
+
+const MyComponent = ({ title, count, onClick }) => {
+  const [localCount, setLocalCount] = useState(count);
+
+  const handleClick = () => {
+    setLocalCount(localCount + 1);
+    onClick?.();
+  };
+
+  return (
+    <div style={{ padding: "20px" }}>
+      <h2>{title}</h2>
+      <p>Count: {localCount}</p>
+      <button onClick={handleClick}>Increment</button>
+    </div>
+  );
+};
+
+export default registerComponent("MyComponent", properties, MyComponent);
+```
+
+## Component Properties
+
+Define properties that users can configure:
+
+<Tabs>
+  <Tab title="Basic Types">
+    ```typescript
+    const properties = {
+      text: Prop.string().default('Hello'),
+      number: Prop.number().default(0),
+      boolean: Prop.boolean().default(true),
+      array: Prop.array().default([]),
+      object: Prop.any().default({})
+    };
+    ```
+  </Tab>
+  <Tab title="Events">
+    ```typescript
+    const properties = {
+      onClick: Prop.event(),
+      onChange: Prop.event(),
+      onLoad: Prop.event()
+    };
+    ```
+  </Tab>
+  <Tab title="Advanced">
+    ```typescript
+    const properties = {
+      options: Prop.array().default([
+        { label: 'Option 1', value: 'opt1' },
+        { label: 'Option 2', value: 'opt2' }
+      ]),
+      theme: Prop.string()
+        .default('light')
+        .propertiesPanel({
+          controlType: 'DROP_DOWN',
+          options: [
+            { label: 'Light', value: 'light' },
+            { label: 'Dark', value: 'dark' }
+          ]
+        })
+    };
+    ```
+  </Tab>
+</Tabs>
+
+## Using External Libraries
+
+Import and use any NPM package:
+
+```typescript
+import { Chart } from "chart.js";
+import { format } from "date-fns";
+import axios from "axios";
+
+const MyChart = ({ data }) => {
+  // Use external libraries in your component
+  const formattedDate = format(new Date(), "PPP");
+
+  return (
+    <div>
+      <h3>{formattedDate}</h3>
+      <Chart data={data} />
+    </div>
+  );
+};
+```
+
+## Styling
+
+<AccordionGroup>
+  <Accordion title="Inline Styles" icon="paintbrush">
+    ```typescript
+    <div
+      style={{
+        backgroundColor: "#f3f4f6",
+        padding: "16px",
+        borderRadius: "8px",
+        boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
+      }}
+    >
+      Content
+    </div>
+    ```
+  </Accordion>
+  <Accordion title="CSS Modules" icon="file-code">
+    ```typescript import styles from './MyComponent.module.css';
+    <div className={styles.container}>
+      <h2 className={styles.title}>Hello</h2>
+    </div>
+    ```
+  </Accordion>
+  <Accordion title="Styled Components" icon="wand-magic-sparkles">
+    ```typescript import styled from 'styled-components'; const Container =
+    styled.div` background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px; border-radius: 10px; `; ```
+  </Accordion>
+</AccordionGroup>
+
+## Best Practices
+
+<Steps>
+  <Step title="Keep Components Small">
+    Break down complex components into smaller, reusable pieces
+  </Step>
+  <Step title="Use TypeScript">
+    Leverage TypeScript for better type safety and IDE support
+  </Step>
+  <Step title="Handle Errors">
+    Implement proper error boundaries and error handling
+  </Step>
+  <Step title="Optimize Performance">
+    Use React.memo, useMemo, and useCallback where appropriate
+  </Step>
+  <Step title="Test Your Components">
+    Write unit tests for custom components
+  </Step>
+</Steps>
+
+## Example: Data Table Component
+
+```typescript
+import React from "react";
+import { registerComponent, Prop } from "@superblocks/library";
+
+const properties = {
+  data: Prop.array().default([]),
+  columns: Prop.array().default([]),
+  onRowClick: Prop.event(),
+};
+
+const DataTable = ({ data, columns, onRowClick }) => {
+  return (
+    <table style={{ width: "100%", borderCollapse: "collapse" }}>
+      <thead>
+        <tr>
+          {columns.map((col, i) => (
+            <th
+              key={i}
+              style={{
+                padding: "12px",
+                borderBottom: "2px solid #e5e7eb",
+                textAlign: "left",
+                fontWeight: 600,
+              }}
+            >
+              {col.label}
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((row, i) => (
+          <tr
+            key={i}
+            onClick={() => onRowClick?.(row)}
+            style={{
+              cursor: "pointer",
+              ":hover": { backgroundColor: "#f9fafb" },
+            }}
+          >
+            {columns.map((col, j) => (
+              <td
+                key={j}
+                style={{
+                  padding: "12px",
+                  borderBottom: "1px solid #e5e7eb",
+                }}
+              >
+                {row[col.field]}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+};
+
+export default registerComponent("DataTable", properties, DataTable);
+```
+
+## Resources
+
+<CardGroup cols={2}>
+  <Card title="React Documentation" icon="book" href="https://react.dev">
+    Official React documentation
+  </Card>
+  <Card
+    title="TypeScript Docs"
+    icon="code"
+    href="https://www.typescriptlang.org"
+  >
+    TypeScript documentation
+  </Card>
+  <Card title="Component Library" icon="cube" href="/guides">
+    Browse example components
+  </Card>
+  <Card
+    title="API Reference"
+    icon="terminal"
+    href="/api-reference/introduction"
+  >
+    Superblocks API reference
+  </Card>
+</CardGroup>

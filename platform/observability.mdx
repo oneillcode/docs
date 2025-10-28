@@ -1,0 +1,66 @@
+---
+title: "Observability"
+description: "Monitor and analyze your applications"
+---
+
+## Observability
+
+Monitor the performance and health of your Superblocks applications.
+
+## Metrics
+
+<CardGroup cols={2}>
+  <Card title="Performance" icon="gauge-high">
+    Response times and throughput
+  </Card>
+  <Card title="Errors" icon="triangle-exclamation">
+    Error rates and types
+  </Card>
+  <Card title="Usage" icon="chart-line">
+    User activity and engagement
+  </Card>
+  <Card title="Resources" icon="server">
+    CPU, memory, and database usage
+  </Card>
+</CardGroup>
+
+## Logging
+
+Comprehensive application logging:
+
+```javascript
+// Custom logging
+console.log("User action:", {
+  userId: currentUser.id,
+  action: "button_click",
+  timestamp: new Date(),
+});
+```
+
+View logs in real-time:
+
+- Filter by severity
+- Search by keywords
+- Export for analysis
+
+## Alerts
+
+Set up alerts for critical issues:
+
+<Steps>
+  <Step title="Define Conditions">Set thresholds for metrics</Step>
+  <Step title="Choose Channels">Email, Slack, PagerDuty, etc.</Step>
+  <Step title="Test Alerts">Verify notifications work</Step>
+  <Step title="Monitor">Receive alerts when issues occur</Step>
+</Steps>
+
+## Dashboards
+
+Create custom dashboards to visualize:
+
+- Application performance
+- User behavior
+- Business metrics
+- System health
+
+<Tip>Set up dashboards for each environment to track deployment impacts</Tip>

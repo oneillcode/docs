@@ -1,0 +1,69 @@
+---
+title: "Role Based Access Control"
+description: "Configure permissions and access control"
+---
+
+## Role Based Access Control (RBAC)
+
+Control who can access and modify your applications and data.
+
+## User Roles
+
+<CardGroup cols={2}>
+  <Card title="Admin" icon="user-tie">
+    Full access to all features and settings
+  </Card>
+  <Card title="Developer" icon="code">
+    Build and deploy applications
+  </Card>
+  <Card title="Viewer" icon="eye">
+    View applications only
+  </Card>
+  <Card title="Custom" icon="sliders">
+    Define your own roles
+  </Card>
+</CardGroup>
+
+## Permissions
+
+Configure fine-grained permissions for:
+
+<AccordionGroup>
+  <Accordion title="Applications" icon="window-restore">
+    - Create applications - Edit applications - Delete applications - Deploy
+    applications
+  </Accordion>
+  <Accordion title="Data Sources" icon="database">
+    - Add connections - Edit connections - View connection details - Execute
+    queries
+  </Accordion>
+  <Accordion title="Users" icon="users">
+    - Invite users - Manage roles - Remove users - View audit logs
+  </Accordion>
+</AccordionGroup>
+
+## Groups
+
+Organize users into groups for easier management:
+
+```javascript
+// Example: Assign permissions to a group
+const engineeringGroup = {
+  name: "Engineering",
+  permissions: [
+    "applications.create",
+    "applications.edit",
+    "applications.deploy",
+  ],
+  members: ["user1@company.com", "user2@company.com"],
+};
+```
+
+## Audit Logs
+
+Track all access and changes:
+
+- Who accessed what
+- When changes were made
+- What was modified
+- IP addresses and locations

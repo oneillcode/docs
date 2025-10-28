@@ -1,32 +1,179 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Superblocks",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#1e88fd",
+    "light": "#5dadff",
+    "dark": "#1570d8"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Home",
         "groups": [
           {
+            "group": "Welcome",
+            "pages": ["index"]
+          },
+          {
             "group": "Getting started",
+            "pages": ["quickstart", "development"]
+          }
+        ]
+      },
+      {
+        "tab": "Application Building",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": ["application-building/get-started"]
+          },
+          {
+            "group": "Clark",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "application-building/clark-overview",
+              "application-building/prompt-engineering",
+              "application-building/plan-mode",
+              "application-building/context",
+              "application-building/checkpointing"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Visual Editing",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "application-building/visual-editor",
+              "application-building/component-properties",
+              "application-building/styling",
+              "application-building/drag-drop",
+              {
+                "group": "Component Directory",
+                "pages": [
+                  "application-building/component-directory",
+                  "application-building/components/accordion",
+                  "application-building/components/area-chart",
+                  "application-building/components/avatar",
+                  "application-building/components/badge",
+                  "application-building/components/bar-chart",
+                  "application-building/components/breadcrumb",
+                  "application-building/components/button",
+                  "application-building/components/calendar"
+                ]
+              }
             ]
+          },
+          {
+            "group": "API Builder",
+            "pages": [
+              "application-building/api-builder-overview",
+              {
+                "group": "Control Blocks",
+                "pages": [
+                  "application-building/control-blocks",
+                  "application-building/control-blocks/condition",
+                  "application-building/control-blocks/loop-and-break",
+                  "application-building/control-blocks/parallel-and-wait",
+                  "application-building/control-blocks/return",
+                  "application-building/control-blocks/stream-and-send",
+                  "application-building/control-blocks/try-catch-throw-error",
+                  "application-building/control-blocks/variables"
+                ]
+              },
+              "application-building/backend-javascript",
+              "application-building/python",
+              "application-building/sql"
+            ]
+          },
+          {
+            "group": "React",
+            "pages": [
+              "application-building/react",
+              "application-building/local-development-mode",
+              "application-building/routing",
+              "application-building/state-management"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Platform",
+        "groups": [
+          {
+            "group": "Platform Overview",
+            "pages": ["platform/overview"]
+          },
+          {
+            "group": "On-Premise Agent",
+            "pages": ["platform/agent"]
+          },
+          {
+            "group": "Integrations",
+            "pages": ["platform/integrations"]
+          },
+          {
+            "group": "Development Lifecycle",
+            "pages": ["platform/lifecycle"]
+          },
+          {
+            "group": "Role Based Access Control",
+            "pages": ["platform/rbac"]
+          },
+          {
+            "group": "Observability",
+            "pages": ["platform/observability"]
+          }
+        ]
+      },
+      {
+        "tab": "Security",
+        "groups": [
+          {
+            "group": "Security Guide",
+            "pages": ["security/guide"]
+          },
+          {
+            "group": "AI Security",
+            "pages": ["security/ai-security"]
+          },
+          {
+            "group": "SOC 2 Type 2",
+            "pages": ["security/soc2"]
+          },
+          {
+            "group": "HIPAA",
+            "pages": ["security/hipaa"]
+          },
+          {
+            "group": "Secrets Managers",
+            "pages": ["security/secrets"]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "API documentation",
+            "pages": ["api-reference/introduction"]
+          },
+          {
+            "group": "Endpoint examples",
+            "pages": [
+              "api-reference/endpoint/get",
+              "api-reference/endpoint/create",
+              "api-reference/endpoint/delete",
+              "api-reference/endpoint/webhook"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "Customization",
+            "pages": ["essentials/settings", "essentials/navigation"]
           },
           {
             "group": "Writing content",
@@ -48,22 +195,15 @@
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Superblocks 1.0",
         "groups": [
           {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
+            "group": "Overview",
+            "pages": ["v1/introduction"]
           },
           {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
+            "group": "Features",
+            "pages": ["v1/features"]
           }
         ]
       }
@@ -71,52 +211,60 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Changelog",
+          "href": "https://superblocks.com/changelog",
+          "icon": "sparkles"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Status",
+          "href": "https://superblocks.com/status",
+          "icon": "signal"
         }
       ]
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/Light Horizontal Logo.svg",
+    "dark": "/logo/Dark Horizontal Logo.svg"
   },
   "navbar": {
     "links": [
       {
+        "label": "Community",
+        "href": "https://community.superblocks.com"
+      },
+      {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@superblocks.com"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Launch App",
+      "href": "https://app.superblocks.com"
     }
+  },
+  "search": {
+    "prompt": "Ask about Superblocks docs..."
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/superblocks",
+      "github": "https://github.com/superblocks",
+      "linkedin": "https://linkedin.com/company/superblocks",
+      "website": "https://superblocks.com"
     }
   }
 }

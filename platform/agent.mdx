@@ -1,0 +1,49 @@
+---
+title: "On-Premise Agent"
+description: "Deploy and manage on-premise infrastructure"
+---
+
+## On-Premise Agent
+
+Connect Superblocks to your private network and on-premise resources securely.
+
+## Overview
+
+The Superblocks Agent enables secure connections to:
+
+- Databases behind firewalls
+- Internal APIs
+- On-premise systems
+- VPC-hosted resources
+
+## Installation
+
+<Tabs>
+  <Tab title="Docker">
+    ```bash docker run -d \ --name superblocks-agent \ -e
+    AGENT_KEY=your_agent_key \ superblocks/agent:latest ```
+  </Tab>
+  <Tab title="Kubernetes">
+    ```yaml apiVersion: apps/v1 kind: Deployment metadata: name:
+    superblocks-agent spec: replicas: 2 template: spec: containers: - name:
+    agent image: superblocks/agent:latest env: - name: AGENT_KEY value:
+    your_agent_key ```
+  </Tab>
+</Tabs>
+
+## Configuration
+
+<CardGroup cols={2}>
+  <Card title="Network" icon="network-wired">
+    Configure network settings and firewall rules
+  </Card>
+  <Card title="Authentication" icon="key">
+    Set up secure authentication
+  </Card>
+  <Card title="Monitoring" icon="chart-line">
+    Monitor agent health and performance
+  </Card>
+  <Card title="Updates" icon="arrow-up">
+    Automatic or manual updates
+  </Card>
+</CardGroup>

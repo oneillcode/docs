@@ -1,0 +1,58 @@
+---
+title: "AI Security"
+description: "Secure AI-powered features"
+---
+
+## AI Security
+
+Best practices for using AI features like Clark securely.
+
+## Data Privacy
+
+<CardGroup cols={2}>
+  <Card title="Data Isolation" icon="shield">
+    Your data never trains our models
+  </Card>
+  <Card title="Encryption" icon="lock">
+    All AI requests are encrypted
+  </Card>
+  <Card title="No Retention" icon="trash">
+    Prompts and responses not stored
+  </Card>
+  <Card title="Compliance" icon="certificate">
+    GDPR and SOC 2 compliant
+  </Card>
+</CardGroup>
+
+## Safe AI Usage
+
+<Steps>
+  <Step title="Review Generated Code">
+    Always review AI-generated code before deploying
+  </Step>
+  <Step title="Validate Data">
+    Verify AI suggestions against your requirements
+  </Step>
+  <Step title="Test Thoroughly">
+    Test AI-generated features comprehensively
+  </Step>
+  <Step title="Monitor">Track AI usage and outcomes</Step>
+</Steps>
+
+## Sensitive Data
+
+<Warning>
+  Avoid including sensitive data in AI prompts: - API keys and credentials -
+  Personal identifiable information (PII) - Proprietary business logic -
+  Customer data
+</Warning>
+
+## Best Practices
+
+```javascript
+// ✅ Good: Generic request
+"Create a user table with email and name fields";
+
+// ❌ Bad: Contains sensitive data
+"Create a table with these users: john@company.com, API key: sk_live_...";
+```
